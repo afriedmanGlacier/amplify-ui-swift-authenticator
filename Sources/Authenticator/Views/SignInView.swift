@@ -24,11 +24,7 @@ public struct SignInView<Header: View,
     private var viewModifiers = ViewModifiers()
 
     var focusedField: FocusState<SignInState.Field?> = FocusState()
-
-    /// Creates a `SignInView`
-    /// - Parameter state: The ``SignInState`` that is observed by this view
-    /// - Parameter headerContent: The content displayed above the fields. Defaults to  ``SignInHeader``
-    /// - Parameter footerContent: The content displayed bellow the fields. Defaults to  ``SignInFooter``
+    
     public init(
         state: SignInState,
         @ViewBuilder headerContent: () -> Header = {
@@ -38,6 +34,26 @@ public struct SignInView<Header: View,
             SignInFooter()
         }
     ) {
+        self.init(user: nil, state: state, headerContent: headerContent, footerContent: footerContent)
+    }
+
+    /// Creates a `SignInView`
+    /// - Parameter state: The ``SignInState`` that is observed by this view
+    /// - Parameter headerContent: The content displayed above the fields. Defaults to  ``SignInHeader``
+    /// - Parameter footerContent: The content displayed bellow the fields. Defaults to  ``SignInFooter``
+    public init(
+        user: String? = nil,
+        state: SignInState,
+        @ViewBuilder headerContent: () -> Header = {
+            SignInHeader()
+        },
+        @ViewBuilder footerContent: () -> Footer = {
+            SignInFooter()
+        }
+    ) {
+        if let user = user {
+            state.username = user
+        }
         self.state = state
         self.focusedField.wrappedValue = nil
         self.headerContent = headerContent()
@@ -216,6 +232,7 @@ public struct SignInFooter: View {
     @Environment(\.authenticatorState) private var authenticatorState
     @Environment(\.authenticatorOptions) private var options
     @State private var authenticatorHidesSignUpButton = false
+    @State private var supportLink: URL?
 
     private var shouldHideSignUpButton: Bool?
 
@@ -228,6 +245,10 @@ public struct SignInFooter: View {
     /// - Parameter hidesSignUpButton: Whether to hide the Sign Up button.
     public init(hidesSignUpButton: Bool) {
         self.shouldHideSignUpButton = hidesSignUpButton
+    }
+    
+    public init(supportLink: URL) {
+        self.supportLink = supportLink
     }
 
     /// Whether the Sign Up button is hidden
@@ -247,13 +268,17 @@ public struct SignInFooter: View {
             .buttonStyle(.link)
 
             Spacer()
+            
+            if let link = self.supportLink {
+                Link("Support", destination: URL(string: "https://glacier.chat/support")!)
+            }
 
-            if !hidesSignUpButton {
+            /*if !hidesSignUpButton {
                 Button("authenticator.signIn.button.createAccount".localized()) {
                     authenticatorState.move(to: .signUp)
                 }
                 .buttonStyle(.link)
-            }
+            }*/
 
         }
         .animation(options.contentAnimation, value: hidesSignUpButton)
