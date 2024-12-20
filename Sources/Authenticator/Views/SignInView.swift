@@ -231,6 +231,7 @@ public struct SignInFooter: View {
     @Environment(\.authenticatorTheme) private var theme
     @Environment(\.authenticatorState) private var authenticatorState
     @Environment(\.authenticatorOptions) private var options
+    @Environment(\.openURL) private var openURL
     @State private var authenticatorHidesSignUpButton = false
     private var supportLink: URL?
     private var shouldHideSignUpButton: Bool?
@@ -269,7 +270,11 @@ public struct SignInFooter: View {
             Spacer()
             
             if let link = self.supportLink {
-                Link("Support", destination: link)
+                Button("Support") {
+                    openURL(link)
+                    //Link("Support", destination: link)
+                }
+                .buttonStyle(.link)
             }
 
             /*if !hidesSignUpButton {
