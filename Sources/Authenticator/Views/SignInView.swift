@@ -232,8 +232,7 @@ public struct SignInFooter: View {
     @Environment(\.authenticatorState) private var authenticatorState
     @Environment(\.authenticatorOptions) private var options
     @State private var authenticatorHidesSignUpButton = false
-    @State private var supportLink: URL?
-
+    private var supportLink: URL?
     private var shouldHideSignUpButton: Bool?
 
     /// Creates a `SignInFooter`
