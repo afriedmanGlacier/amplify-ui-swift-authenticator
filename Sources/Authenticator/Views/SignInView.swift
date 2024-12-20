@@ -270,7 +270,7 @@ public struct SignInFooter: View {
             Spacer()
             
             if let link = self.supportLink {
-                Link("Support", destination: URL(string: "https://glacier.chat/support")!)
+                Link("Support", destination: link)
             }
 
             /*if !hidesSignUpButton {
