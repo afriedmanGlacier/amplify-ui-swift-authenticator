@@ -22,7 +22,7 @@ public struct ConfirmSignInWithTOTPView<Header: View,
     public init(
         state: ConfirmSignInWithCodeState,
         @ViewBuilder headerContent: () -> Header = {
-            //ConfirmSignInWithTOTPHeader()
+            ConfirmSignInWithTOTPHeader()
         },
         @ViewBuilder footerContent: () -> Footer = {
             ConfirmSignInWithTOTPFooter()
@@ -53,7 +53,7 @@ public struct ConfirmSignInWithTOTPHeader: View {
     public init() {}
     public var body: some View {
         DefaultHeader(
-            title: "authenticator.confirmSignInWithCode.totp.title".localized()
+            title: ""//authenticator.confirmSignInWithCode.totp.title".localized()
         )
     }
 }
