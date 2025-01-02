@@ -15,6 +15,7 @@ import SwiftUI
 public struct ResetPasswordView<Header: View,
                                 Footer: View>: View {
     @Environment(\.authenticatorState) private var authenticatorState
+    @Environment(\.authenticatorTheme) private var theme
     @StateObject private var usernameValidator: Validator
     @ObservedObject private var state: ResetPasswordState
     private let headerContent: Header
@@ -65,6 +66,7 @@ public struct ResetPasswordView<Header: View,
             .buttonStyle(.primary)
             
             Text("authenticator.resetPassword.note".localized())
+                .font(theme.fonts.footnote)
             
             footerContent
         }
