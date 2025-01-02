@@ -22,7 +22,7 @@ public struct ConfirmSignInWithTOTPView<Header: View,
     public init(
         state: ConfirmSignInWithCodeState,
         @ViewBuilder headerContent: () -> Header = {
-            ConfirmSignInWithTOTPHeader()
+            //ConfirmSignInWithTOTPHeader()
         },
         @ViewBuilder footerContent: () -> Footer = {
             ConfirmSignInWithTOTPFooter()

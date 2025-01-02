@@ -83,7 +83,7 @@
 
 /* Confirm Sign In with TOTP */
 "authenticator.confirmSignInWithCode.totp.title" = "Enter your one-time passcode";
-"authenticator.field.totp.code.label" = "Please enter the code from your registered Authenticator app";
+"authenticator.field.totp.code.label" = "Please enter the code from your Authenticator app";
 "authenticator.field.totp.code.placeholder" = "Verification Code";
 "authenticator.confirmSignInWithCode.totp.button.submit" = "Confirm";
 "authenticator.confirmSignInWithCode.totp.button.backToSignIn" = "Back to Sign In";
