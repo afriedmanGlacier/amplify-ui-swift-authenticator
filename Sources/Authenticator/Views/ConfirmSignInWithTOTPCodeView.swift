@@ -52,9 +52,10 @@ public struct ConfirmSignInWithTOTPView<Header: View,
 public struct ConfirmSignInWithTOTPHeader: View {
     public init() {}
     public var body: some View {
-        DefaultHeader(
-            title: ""//authenticator.confirmSignInWithCode.totp.title".localized()
-        )
+        Text("")
+        /*DefaultHeader(
+            title: "authenticator.confirmSignInWithCode.totp.title".localized()
+        )*/
     }
 }
 

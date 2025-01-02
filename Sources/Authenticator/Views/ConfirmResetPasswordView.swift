@@ -158,9 +158,10 @@ public struct ConfirmResetPasswordView<Header: View,
 public struct ConfirmResetPasswordHeader: View {
     public init() {}
     public var body: some View {
-        DefaultHeader(
+        Text("")
+        /*DefaultHeader(
             title: "authenticator.confirmResetPassword.title".localized()
-        )
+        )*/
     }
 }
 

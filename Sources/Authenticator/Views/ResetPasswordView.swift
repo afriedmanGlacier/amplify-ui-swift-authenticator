@@ -57,12 +57,14 @@ public struct ResetPasswordView<Header: View,
                 .textInputAutocapitalization(.never)
             #endif
                       
-            Button("authenticator.resetPassword.button.sendCode".localized()) {
+            Button("authenticator.resetPassword.button.forgotPassword".localized()) {
                 Task {
                     await resetPassword()
                 }
             }
             .buttonStyle(.primary)
+            
+            Text("authenticator.resetPassword.note".localized())
             
             footerContent
         }
@@ -123,8 +125,10 @@ public struct ResetPasswordView<Header: View,
             log.verbose("Username validation failed")
             return
         }
+        
+        state.authenticatorState.setCurrentStep(.confirmResetPassword(deliveryDetails: nil))
 
-        try? await state.resetPassword()
+        //try? await state.resetPassword()
     }
 }
 
@@ -134,9 +138,10 @@ extension ResetPasswordView: AuthenticatorLogging {}
 public struct ResetPasswordHeader: View {
     public init() {}
     public var body: some View {
-        DefaultHeader(
+        Text("")
+        /*DefaultHeader(
             title: "authenticator.resetPassword.title".localized()
-        )
+        )*/
     }
 }
 
