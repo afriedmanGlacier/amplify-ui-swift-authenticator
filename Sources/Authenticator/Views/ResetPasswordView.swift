@@ -58,14 +58,14 @@ public struct ResetPasswordView<Header: View,
                 .textInputAutocapitalization(.never)
             #endif
                       
-            Button("authenticator.resetPassword.button.forgotPassword".localized()) {
+            Button("authenticator.resetPassword.button.resetPassword".localized()) {
                 Task {
                     await resetPassword()
                 }
             }
             .buttonStyle(.primary)
             
-            Spacer().frame(height: 30)
+            Spacer().frame(height: 20)
             Text("authenticator.resetPassword.note".localized())
                 .font(theme.fonts.footnote)
             Spacer().frame(height: 20)
@@ -142,10 +142,9 @@ extension ResetPasswordView: AuthenticatorLogging {}
 public struct ResetPasswordHeader: View {
     public init() {}
     public var body: some View {
-        Spacer().frame(height: 2)
-        /*DefaultHeader(
+        DefaultHeader(
             title: "authenticator.resetPassword.title".localized()
-        )*/
+        )
     }
 }
 

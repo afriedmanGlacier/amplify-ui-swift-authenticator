@@ -126,7 +126,7 @@
 
 /* Reset Password view */
 "authenticator.resetPassword.title" = "Reset your password";
-"authenticator.resetPassword.button.forgotPassword" = "Forgot password";
+"authenticator.resetPassword.button.restPassword" = "Reset password";
 "authenticator.resetPassword.note" = "This will send an email with a reset link if there is an email associated with your account. If not, you'll need an administrator's help to reset your password.";
 "authenticator.resetPassword.button.backToSignIn" = "Back to Sign In";
 
