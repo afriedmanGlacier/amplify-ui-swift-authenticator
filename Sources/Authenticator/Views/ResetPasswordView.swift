@@ -65,8 +65,10 @@ public struct ResetPasswordView<Header: View,
             }
             .buttonStyle(.primary)
             
+            Spacer().frame(height: 30)
             Text("authenticator.resetPassword.note".localized())
                 .font(theme.fonts.footnote)
+            Spacer().frame(height: 20)
             
             footerContent
         }
@@ -140,7 +142,7 @@ extension ResetPasswordView: AuthenticatorLogging {}
 public struct ResetPasswordHeader: View {
     public init() {}
     public var body: some View {
-        Text("")
+        Spacer().frame(height: 2)
         /*DefaultHeader(
             title: "authenticator.resetPassword.title".localized()
         )*/
