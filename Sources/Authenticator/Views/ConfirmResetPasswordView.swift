@@ -68,8 +68,7 @@ public struct ConfirmResetPasswordView<Header: View,
         AuthenticatorView(isBusy: state.isBusy) {
             headerContent
             
-            Spacer().frame(height: 10)
-            Text("authenticator.resetPassword.note".localized())
+            Text("authenticator.confirmResetPassword.note".localized())
                 .font(theme.fonts.footnote)
 
             /*TextField(
@@ -121,14 +120,14 @@ public struct ConfirmResetPasswordView<Header: View,
 
             footerContent
         }
-        .messageBanner($state.message)
+        /*.messageBanner($state.message)
         .keyboardIterableToolbar(fields: self)
         .onAppear {
             state.message = .info(
                 message: state.localizedMessage(for: state.deliveryDetails)
             )
         }
-        /*.onSubmit {
+        .onSubmit {
             if hasNextField {
                 focusNextField()
             } else {
