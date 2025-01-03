@@ -13,7 +13,7 @@ let package = Package(
             targets: ["Authenticator"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/aws-amplify/amplify-swift", from: "2.45.0")
+        .package(url: "https://github.com/aws-amplify/amplify-swift", from: "2.45.3")
     ],
     targets: [
         .target(
