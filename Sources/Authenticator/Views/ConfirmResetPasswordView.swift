@@ -12,9 +12,10 @@ import SwiftUI
 public struct ConfirmResetPasswordView<Header: View,
                                        Footer: View>: View, KeyboardIterableFields {
     @Environment(\.authenticatorState) private var authenticatorState
-    @StateObject private var codeValidator: Validator
-    @StateObject private var passwordValidator: Validator
-    @StateObject private var confirmPasswordValidator: Validator
+    @Environment(\.authenticatorTheme) private var theme
+    //@StateObject private var codeValidator: Validator
+    //@StateObject private var passwordValidator: Validator
+    //@StateObject private var confirmPasswordValidator: Validator
     @ObservedObject private var state: ConfirmResetPasswordState
     private let headerContent: Header
     private let footerContent: Footer
@@ -37,7 +38,7 @@ public struct ConfirmResetPasswordView<Header: View,
         self.state = state
         self.headerContent = headerContent()
         self.footerContent = footerContent()
-        self._codeValidator = StateObject(wrappedValue: Validator(
+        /*self._codeValidator = StateObject(wrappedValue: Validator(
             using: FieldValidators.required
         ))
         self._passwordValidator = StateObject(wrappedValue: Validator(
@@ -59,14 +60,19 @@ public struct ConfirmResetPasswordView<Header: View,
                 }
                 return nil
             }
-        ))
+        ))*/
     }
 
     public var body: some View {
+        
         AuthenticatorView(isBusy: state.isBusy) {
             headerContent
+            
+            Spacer().frame(height: 10)
+            Text("authenticator.resetPassword.note".localized())
+                .font(theme.fonts.footnote)
 
-            TextField(
+            /*TextField(
                 "authenticator.field.code.label".localized(),
                 text: $state.confirmationCode,
                 placeholder: "authenticator.field.code.placeholder".localized(),
@@ -111,7 +117,7 @@ public struct ConfirmResetPasswordView<Header: View,
                     await confirmResetPassword()
                 }
             }
-            .buttonStyle(.primary)
+            .buttonStyle(.primary)*/
 
             footerContent
         }
@@ -122,7 +128,7 @@ public struct ConfirmResetPasswordView<Header: View,
                 message: state.localizedMessage(for: state.deliveryDetails)
             )
         }
-        .onSubmit {
+        /*.onSubmit {
             if hasNextField {
                 focusNextField()
             } else {
@@ -130,7 +136,7 @@ public struct ConfirmResetPasswordView<Header: View,
                     await confirmResetPassword()
                 }
             }
-        }
+        }*/
     }
 
     /// Sets a custom error mapping function for the `AuthError`s that are displayed
@@ -140,7 +146,7 @@ public struct ConfirmResetPasswordView<Header: View,
         return self
     }
 
-    private func confirmResetPassword() async {
+    /*private func confirmResetPassword() async {
         let codeValidation = codeValidator.validate()
         let passwordValidation = passwordValidator.validate()
         let confirmPasswordValidation = confirmPasswordValidator.validate()
@@ -151,17 +157,16 @@ public struct ConfirmResetPasswordView<Header: View,
         }
 
         try? await state.confirmResetPassword()
-    }
+    }*/
 }
 
 /// Default header for the ``ConfirmResetPasswordView``. It displays the view's title
 public struct ConfirmResetPasswordHeader: View {
     public init() {}
     public var body: some View {
-        Text("")
-        /*DefaultHeader(
+        DefaultHeader(
             title: "authenticator.confirmResetPassword.title".localized()
-        )*/
+        )
     }
 }
 

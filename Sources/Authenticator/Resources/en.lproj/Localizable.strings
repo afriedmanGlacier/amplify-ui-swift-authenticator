@@ -126,12 +126,13 @@
 
 /* Reset Password view */
 "authenticator.resetPassword.title" = "Reset your password";
-"authenticator.resetPassword.button.restPassword" = "Reset password";
+"authenticator.resetPassword.button.resetPassword" = "Reset password";
 "authenticator.resetPassword.note" = "This will send an email with a reset link if there is an email associated with your account. If not, you'll need an administrator's help to reset your password.";
 "authenticator.resetPassword.button.backToSignIn" = "Back to Sign In";
 
 /* Confirm Reset Password view */
-"authenticator.confirmResetPassword.title" = "Reset your password";
+"authenticator.confirmResetPassword.title" = "Reset email sent";
+"authenticator.confirmResetPassword.note" = "Check your email for a password reset link. It may be in the Spam folder. If you do not receive email, please contact your Glacier system administrator.";
 "authenticator.confirmResetPassword.button.submit" = "Submit";
 "authenticator.confirmResetPassword.button.backToSignIn" = "Back to Sign In";
 
