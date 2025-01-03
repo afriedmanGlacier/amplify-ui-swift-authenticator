@@ -65,7 +65,7 @@ public struct ResetPasswordView<Header: View,
             }
             .buttonStyle(.primary)
             
-            Spacer().frame(height: 20)
+            Spacer().frame(height: 10)
             Text("authenticator.resetPassword.note".localized())
                 .font(theme.fonts.footnote)
             Spacer().frame(height: 20)
@@ -130,9 +130,9 @@ public struct ResetPasswordView<Header: View,
             return
         }
         
-        state.authenticatorState.setCurrentStep(.confirmResetPassword(deliveryDetails: nil))
+        //state.authenticatorState.setCurrentStep(.confirmResetPassword(deliveryDetails: nil))
 
-        //try? await state.resetPassword()
+        try? await state.resetPassword()
     }
 }
 
